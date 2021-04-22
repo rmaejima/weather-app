@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 
 //ComponentPropsを使ってもよさそう。
 interface ResultsProps {
@@ -17,21 +18,52 @@ export const Results: FC<ResultsProps> = ({
   icon,
 }) => {
   return (
-    <div>
-      {cityName && <div>{cityName}</div>}
-      {country && <div>{country}</div>}
+    <ResultStyle>
+      {cityName && <City>{cityName}</City>}
+      {country && <Country>{country}</Country>}
       {temperature && (
-        <div>
+        <Temp>
           {temperature}
-          <span>℃</span>
-        </div>
+          <Span>℃</Span>
+        </Temp>
       )}
       {conditionText && (
-        <div>
-          <img src={icon} alt="icon" />
+        <Condition>
+          <Icon src={icon} alt="icon" />
           <span>{conditionText}</span>
-        </div>
+        </Condition>
       )}
-    </div>
+    </ResultStyle>
   );
 };
+
+//---------------------------------styled component-----------------------------------
+const ResultStyle = styled.div`
+  /* font-size: 30px; */
+`;
+
+const City = styled.div`
+  font-size: 4rem;
+`;
+const Country = styled.div`
+  font-size: 2rem;
+`;
+const Temp = styled.div`
+  font-size: 6rem;
+  margin: 10px 0;
+  color: #f15186;
+`;
+const Span = styled.span`
+  font-size: 3rem;
+  color: #333;
+`;
+const Condition = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+`;
+const Icon = styled.img`
+  width: 200px;
+  height: 200px;
+`;
