@@ -32,39 +32,57 @@ export const MainPage: FC = () => {
   };
   //APIに情報を送る関数
   const getWeather = async (e: FormEvent) => {
-    e.preventDefault(); //リロードを無効化する
-    //読み込みはじめ
-    setLoading(true);
-    // awaitを使うと見やすくなるので積極的に使っていく。
-    const res = await axios.get(
-      `http://api.weatherapi.com/v1/current.json?key=2fb7710ac7cb41b1a3550220212104&q=${city}&aqi=no`
-    );
-    setResults({
-      country: res.data.location.country,
-      cityName: res.data.location.name,
-      temperature: res.data.current.temp_c,
-      conditionText: res.data.current.condition.text,
-      icon: res.data.current.condition.icon,
-    });
-    //上のコードと等価
-    // axios
-    //   .get(
-    //     `http://api.weatherapi.com/v1/current.json?key=2fb7710ac7cb41b1a3550220212104&q=${city}&aqi=no`
-    //   )
-    //   .then((res) => {
-    //     //オブジェクトの型の指定方法がわからなかったので、とりあえずひとつでやってみる。
-    //     setResults({
-    //       country: res.data.location.country,
-    //       cityName: res.data.location.name,
-    //       temperature: res.data.current.temp_c,
-    //       conditionText: res.data.current.condition.text,
-    //       icon: res.data.current.condition.icon,
-    //     });
-    //   });
+    try {
+      e.preventDefault(); //リロードを無効化する
+      //読み込みはじめ
+      setLoading(true);
+      // awaitを使うと見やすくなるので積極的に使っていく。
+      const res = await axios.get(
+        `http://api.weatherapi.com/v1/current.json?key=2fb7710ac7cb41b1a3550220212104&q=${city}&aqi=no`
+      );
+      setResults({
+        country: res.data.location.country,
+        cityName: res.data.location.name,
+        temperature: res.data.current.temp_c,
+        conditionText: res.data.current.condition.text,
+        icon: res.data.current.condition.icon,
+      });
+      //上のコードと等価
+      // axios
+      //   .get(
+      //     `http://api.weatherapi.com/v1/current.json?key=2fb7710ac7cb41b1a3550220212104&q=${city}&aqi=no`
+      //   )
+      //   .then((res) => {
+      //     //オブジェクトの型の指定方法がわからなかったので、とりあえずひとつでやってみる。
+      //     setResults({
+      //       country: res.data.location.country,
+      //       cityName: res.data.location.name,
+      //       temperature: res.data.current.temp_c,
+      //       conditionText: res.data.current.condition.text,
+      //       icon: res.data.current.condition.icon,
+      //     });
+      //   });
 
-    //読み込みが終わり
-    setLoading(false);
+      //読み込みが終わり
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      resetResults();
+      // alert("エラーが発生しました。入力が正しいか確認してください 。");
+    }
   };
+
+  //resultを初期化する関数
+  const resetResults = () => {
+    setResults({
+      country: "",
+      cityName: "",
+      temperature: "",
+      conditionText: "",
+      icon: "",
+    });
+  };
+
   return (
     <div className="App">
       <Wrapper>
@@ -89,6 +107,7 @@ export const MainPage: FC = () => {
 };
 
 //---------------------------------styled component-----------------------------------
+
 const Wrapper = styled.div`
   /* margin: 0;
     padding: 0; */
@@ -131,6 +150,7 @@ const Container = styled.div`
     transform: translateY(-4px);
   }
   @media only screen and (max-width: 700px) {
+    /* 画面サイズが700以下は読み込む */
     width: 80vw;
   }
 `;

@@ -11,7 +11,7 @@ interface FormProps {
 
 export const Form: FC<FormProps> = ({ handleCity, getWeather }) => {
   return (
-    <form>
+    <FormStyle>
       <Input
         type="text"
         name="city"
@@ -21,7 +21,7 @@ export const Form: FC<FormProps> = ({ handleCity, getWeather }) => {
       <Button type="submit" onClick={getWeather}>
         Get Weather
       </Button>
-    </form>
+    </FormStyle>
   );
 };
 
@@ -43,6 +43,11 @@ const Input = styled.input`
     outline: none;
     opacity: 0.5;
   }
+  @media screen and (max-width: 480px) {
+    margin-left: 10px;
+    margin-right: 10px;
+    /* margin-bottom: 15px; */
+  }
 `;
 
 const Button = styled.button`
@@ -57,5 +62,17 @@ const Button = styled.button`
   cursor: pointer;
   &:hover {
     opacity: 0.9;
+  }
+  @media screen and (max-width: 480px) {
+    margin-left: 0;
+    padding: 4px 10px;
+  }
+`;
+
+const FormStyle = styled.div`
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width: 480px) {
+    align-content: center;
   }
 `;

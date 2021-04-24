@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const FirstPage: FC = () => {
   return (
     <p>
-      <Link to="/main">始めましょう</Link>;
+      <Link to="/main">始めましょう</Link>
     </p>
   );
 };
