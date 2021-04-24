@@ -1,11 +1,15 @@
 import React, { FC, useState, ChangeEvent, FormEvent } from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 import axios from "axios";
 import { Title } from "../components/Title";
 import { Form } from "../components/Form";
 import { Results } from "../components/Results";
 import { Loading } from "../components/Loading";
 // import "./App.css";
+import {styledComponents} from '../modules/styled-components';
+
+const Wrapper = styledComponents.LayoutStyles.Wrapper;
+const Container = styledComponents.LayoutStyles.Container;
 
 interface ResultInf {
   country: string;
@@ -68,7 +72,7 @@ export const MainPage: FC = () => {
     } catch (e) {
       setLoading(false);
       resetResults();
-      // alert("エラーが発生しました。入力が正しいか確認してください 。");
+      alert("エラーが発生しました。入力が正しいか確認してください 。");
     }
   };
 
@@ -108,49 +112,52 @@ export const MainPage: FC = () => {
 
 //---------------------------------styled component-----------------------------------
 
-const Wrapper = styled.div`
-  /* margin: 0;
-    padding: 0; */
-  width: 100vw;
-  height: 100vh;
-  /* 背景画像が読み込まれる前に表示される背景カラー */
-  background-color: aqua;
-  display: flex;
-  //子要素を横軸の真ん中に配置する。
-  justify-content: center;
-  //縦軸真ん中
-  align-items: center;
+//styled-componentsで定義したものを用いているため、コメントアウト
 
-  background-image: url("./assets/background-image.jpg");
-  background-position: center center;
-  /* 画像をタイル状に繰り返し表示しない */
-  background-repeat: no-repeat;
-  /* コンテンツの高さが画像の高さより大きいとき、動かないように固定 */
-  background-attachment: fixed;
-  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
-  background-size: cover;
-`;
 
-const Container = styled.div`
-  width: 50vw;
-  /* height: 50vh; */
-  /* ここで宣言するのはよくないかもしれない */
-  text-align: center;
-  /* 角を丸くする */
-  border-radius: 15px;
-  /* backdrop-filter: blur(20px); */
-  background-color: #9090ff;
-  /* box-shadow: 4px 4px 13px 5px rgba(0, 0, 0, 0.25); */
-  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.22);
-  transition: 0.5s;
-  /* ホバー */
-  &:hover {
-    /* box-shadow: 4px 4px 13px 5px rgba(0, 0, 0, 0.25); */
-    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
-    transform: translateY(-4px);
-  }
-  @media only screen and (max-width: 700px) {
-    /* 画面サイズが700以下は読み込む */
-    width: 80vw;
-  }
-`;
+// const Wrapper = styled.div`
+//   /* margin: 0;
+//     padding: 0; */
+//   width: 100vw;
+//   height: 100vh;
+//   /* 背景画像が読み込まれる前に表示される背景カラー */
+//   background-color: aqua;
+//   display: flex;
+//   //子要素を横軸の真ん中に配置する。
+//   justify-content: center;
+//   //縦軸真ん中
+//   align-items: center;
+
+//   background-image: url("./assets/background-image.jpg");
+//   background-position: center center;
+//   /* 画像をタイル状に繰り返し表示しない */
+//   background-repeat: no-repeat;
+//   /* コンテンツの高さが画像の高さより大きいとき、動かないように固定 */
+//   background-attachment: fixed;
+//   /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+//   background-size: cover;
+// `;
+
+// const Container = styled.div`
+//   width: 50vw;
+//   /* height: 50vh; */
+//   /* ここで宣言するのはよくないかもしれない */
+//   text-align: center;
+//   /* 角を丸くする */
+//   border-radius: 15px;
+//   /* backdrop-filter: blur(20px); */
+//   background-color: #9090ff;
+//   /* box-shadow: 4px 4px 13px 5px rgba(0, 0, 0, 0.25); */
+//   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.22);
+//   transition: 0.5s;
+//   /* ホバー */
+//   &:hover {
+//     /* box-shadow: 4px 4px 13px 5px rgba(0, 0, 0, 0.25); */
+//     box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15), 0 0 5px rgba(0, 0, 0, 0.1);
+//     transform: translateY(-4px);
+//   }
+//   @media only screen and (max-width: 700px) {
+//     /* 画面サイズが700以下は読み込む */
+//     width: 80vw;
+//   }
+// `;

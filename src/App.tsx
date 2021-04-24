@@ -9,6 +9,9 @@ import { createGlobalStyle } from "styled-components";
 // import { Results } from "./components/Results";
 // import { Loading } from "./components/Loading";
 // import "./App.css";
+// import {styledComponents} from './modules/styled-components';
+
+// const GlobalStyle = styledComponents.LayoutStyles.GlobalStyle;
 
 const App: FC = () => {
   return (
