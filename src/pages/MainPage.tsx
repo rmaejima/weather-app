@@ -6,7 +6,7 @@ import { Form } from "../components/Form";
 import { Results } from "../components/Results";
 import { Loading } from "../components/Loading";
 // import "./App.css";
-import {styledComponents} from '../modules/styled-components';
+import { styledComponents } from "../modules/styled-components";
 
 const Wrapper = styledComponents.LayoutStyles.Wrapper;
 const Container = styledComponents.LayoutStyles.Container;
@@ -40,6 +40,7 @@ export const MainPage: FC = () => {
       e.preventDefault(); //リロードを無効化する
       //読み込みはじめ
       setLoading(true);
+
       // awaitを使うと見やすくなるので積極的に使っていく。
       const res = await axios.get(
         `http://api.weatherapi.com/v1/current.json?key=2fb7710ac7cb41b1a3550220212104&q=${city}&aqi=no`
@@ -113,7 +114,6 @@ export const MainPage: FC = () => {
 //---------------------------------styled component-----------------------------------
 
 //styled-componentsで定義したものを用いているため、コメントアウト
-
 
 // const Wrapper = styled.div`
 //   /* margin: 0;
